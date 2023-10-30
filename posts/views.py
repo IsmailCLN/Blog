@@ -6,4 +6,4 @@ def index(request):
     return render(request,'posts/index.html',{'post':myObject})
 
 def single(request, post_id):
-    return render(rquest,'posts/single.html', {'single':post_id})
+    return render(request,'posts/single.html', {'single':post_id})
