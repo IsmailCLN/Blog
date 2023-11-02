@@ -3,7 +3,13 @@
         <title>POST ANASAYFA</title>
     </head>
     <body>
-        <h1>{{ post.title }}</h1>
-        <p>{{ post.content }}</p>
+
+        <ul>
+        {% for post in posts %}
+        <li>
+            <a href="{% url 'single' post.id %}"> {{ post.title }} </a>
+        </li>
+        {% endfor %}
+        </ul>
     </body>
 </html>
