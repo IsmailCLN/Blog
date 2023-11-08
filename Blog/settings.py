@@ -1,15 +1,14 @@
 import os
-from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
+# See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-7#xhwz31_ne=!n9pl(9c9olor(mz$fx861^^16lq-2w5qp4srx'
+SECRET_KEY = '39mj*53b1uwss(q0%z*$_d+ndnq84kl0)lra^^w0c*c-#i57e$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -26,7 +25,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'posts',
+    'accounts',
+    'crispy_forms',
+
 ]
 
 MIDDLEWARE = [
@@ -61,18 +64,18 @@ WSGI_APPLICATION = 'Blog.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
 
 # Password validation
-# https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
+# https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -91,7 +94,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/4.2/topics/i18n/
+# https://docs.djangoproject.com/en/2.0/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -99,18 +102,15 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
+USE_L10N = True
+
 USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
+# https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-STATIC_URL = 'static/'
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
@@ -125,6 +125,8 @@ LOGOUT_REDIRECT_URL = '/login'
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
