@@ -5,7 +5,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '39mj*53b1uwss(q0%z*$_d+ndnq84kl0)lra^^w0c*c-#i57e$'
@@ -64,7 +63,6 @@ WSGI_APPLICATION = 'Blog.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -75,7 +73,6 @@ DATABASES = {
 
 
 # Password validation
-# https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -108,7 +105,6 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
 
